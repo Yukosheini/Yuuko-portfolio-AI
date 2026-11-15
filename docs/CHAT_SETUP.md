@@ -19,6 +19,12 @@ Database chỉ lưu ngày và số lượt gọi để giới hạn sử dụng.
 Model mặc định: gemini-3.5-flash-lite. Có thể đặt GEMINI_MODEL trong Secrets để đổi model.
 Hết hạn mức Google: chat báo thử lại sau, không tự đổi sang gói trả phí.
 
+Câu trả lời riêng tùy chọn: đặt PRIVATE_PHRASE_SHA256 (SHA-256 của mã sau khi bỏ khoảng trắng
+ở đầu/cuối) và PRIVATE_PHRASE_REPLY trong Supabase Secrets. Không lưu mã hoặc nội dung riêng
+trong repository hay hồ sơ công khai. Nhập đúng toàn bộ mã sẽ trả lời trực tiếp từ máy chủ;
+phân biệt hoa/thường. Phản hồi có private=true nên frontend không thêm lượt này vào ngữ cảnh
+gửi Gemini sau đó. Ai biết mã đều có thể sử dụng, không phải cơ chế xác minh danh tính.
+
 Tên miền cho phép: https://yukosheini.github.io và https://managerial-pink-tbxiaktl.edgeone.dev.
 Đổi tên miền cần cập nhật danh sách origins trong function và triển khai lại.
 Xem thử cục bộ dùng cổng 8000 qua HTTP (không mở file HTML bằng file://).

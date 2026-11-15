@@ -47,6 +47,14 @@ Deno.serve(async (req: Request) => {
     // Atomic daily cap across all function instances; no messages or IPs stored.
     const allowed = await db('rpc/consume_chat_budget', {method: 'POST', body: '{}'});
     if (!allowed) return reply({error: 'Chat đã hết lượt hỏi hôm nay. Bạn vui lòng quay lại ngày mai.'}, 429);
+    // Exact-match private phrase, handled on the server without sending it to Gemini.
+    const phraseHash = Deno.env.get('PRIVATE_PHRASE_SHA256');
+    const privateReply = Deno.env.get('PRIVATE_PHRASE_REPLY');
+    if (phraseHash && privateReply) {
+      const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(message));
+      const hash = Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('');
+      if (hash === phraseHash) return reply({answer: privateReply, private: true});
+    }
     const [profile, achievements, schedule] = await Promise.all([
       db('profile?id=eq.1&select=full_name,university,major,study_year,cohort,bio'),
       db('achievements?profile_id=eq.1&select=title,description,period_label&order=id'),

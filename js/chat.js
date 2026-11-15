@@ -66,7 +66,7 @@
       const data = await response.json();
       if (!response.ok || typeof data.answer !== 'string') throw new Error(data.error || 'Chat tạm thời chưa sẵn sàng.');
       status.textContent = data.answer;
-      history.push({role: 'user', text: message}, {role: 'model', text: data.answer});
+      if (!data.private) history.push({role: 'user', text: message}, {role: 'model', text: data.answer});
       history.splice(0, Math.max(0, history.length - 6));
     } catch (error) {
       status.textContent = error.name === 'TimeoutError' || error.name === 'TypeError'
