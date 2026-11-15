@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đăng nhập · Portfolio Đức</title>
+<link rel="icon" href="assets/images.jfif"><link rel="stylesheet" href="css/login.css">
+<script src="js/auth.js" defer></script>
+</head>
+<body class="login-page">
+<main class="login-card">
+<section class="welcome"><a class="brand" href="index.html">ĐỨC<span> / PORTFOLIO</span></a><div><span class="eyebrow">WELCOME TO MY SPACE</span><h1>Một nơi nhỏ.<br>Nhiều điều để khám phá.</h1><p>Hồ sơ, những dấu mốc và câu chuyện của tôi.<br>Chọn cách bạn muốn bắt đầu.</p></div><span class="welcome-foot">✦ Kết nối từ những điều giản đơn</span></section>
+<section class="login-content"><span class="eyebrow">RẤT VUI ĐƯỢC GẶP BẠN</span><h2>Chào mừng trở lại</h2><p class="muted">Bạn muốn truy cập với vai trò nào?</p>
+<div class="roles" role="group" aria-label="Loại tài khoản"><button type="button" class="role active" data-role="guest" aria-pressed="true"><span>◉</span><strong>Khách</strong><small>Ghé thăm portfolio</small></button><button type="button" class="role" data-role="admin" aria-pressed="false"><span>◇</span><strong>Quản trị viên</strong><small>Không gian của chủ sở hữu</small></button></div>
+<form id="login-form">
+<div id="guest-fields"><label for="captcha-answer">Xác nhận bạn là người thật</label><div class="captcha-row"><div id="captcha-question" aria-live="polite">Đang tải captcha…</div><button id="refresh-captcha" type="button" aria-label="Đổi mã captcha">↻</button></div><input id="captcha-answer" inputmode="numeric" autocomplete="off" placeholder="Nhập kết quả phép tính" required maxlength="3"></div>
+<div id="admin-fields" hidden><label for="admin-password">Mật khẩu quản trị viên</label><input id="admin-password" type="password" autocomplete="current-password" placeholder="Nhập mật khẩu của bạn" maxlength="128" disabled><p class="field-note">Mật khẩu được xác minh an toàn qua máy chủ.</p></div>
+<p id="login-status" role="status" aria-live="polite"></p><button id="login-submit" class="submit" type="submit">Vào khám phá <span>→</span></button>
+</form><p class="privacy-note">Không cần tạo tài khoản khi truy cập với vai trò Khách.</p><noscript>Bạn cần bật JavaScript để đăng nhập.</noscript>
+</section></main></body></html>
